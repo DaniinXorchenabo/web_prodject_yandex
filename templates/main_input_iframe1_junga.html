@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+></script>
+<body>
+<iframe id="iframe" name="target" src="{{herf}}" frameborder="no" scrolling="no" width="100%" ></iframe>
+<div id="reciveIframe">а это инфа которую мы получили с iframe</div>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+		{{ form.answer.label }}<br>
+            {{ form.answer }}<br>
+			
+        <p>{{ form.submit() }}</p>
+    </form>
+<script>
+// отправка сообщения в iframe win.
+window.onload = function(){
+
+var win = document.getElementById("iframe").contentWindow; // объект iframe
+win.postMessage("{{password}}"+"/"+"{{user_name}}"); // отправляем сообщение в iframe ( после запятой адресс iframe )
+
+function listener(event) { // получение сообщения из iframe
+    event.origin == '' 
+    document.getElementById("reciveIframe").innerHTML = event.origin + " прислал: " + event.data;
+	document.getElementById("answer").value = event.data;
+	//document.getElementById("herf").value = event.origin;
+	document.getElementById("submit").click();
+	//document.getElementById("delite" + who_this).click();
+}
+if (window.addEventListener){
+    window.addEventListener("message", listener,false);
+ } else {
+    window.attachEvent("onmessage", listener);
+ }     
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+></script>
+<script>
+function print_local_site(who, parametr){
+document.getElementById("cli").style.color = 'blue';
+var win = document.getElementById(who).contentWindow;
+win.postMessage(parametr);
+};
+</script>
+<body>
+<iframe id="iframe" name="target" src="http://192.168.0.100:8000/4" frameborder="no" scrolling="no" width="100%" ></iframe>
+<div id="reciveIframe">ещё не получили</div>
+<p onclick="print_local_site('iframe', '5555')" id="cli">yyyyyyyyyyyyyyyyyyyy</p>
+
+<script>
+// отправка сообщения в iframe win.
+
+$(function() {
+   //document.getElementById("cli").style.color = 'red';
+   document.getElementById("cli").click();
+   print_local_site("iframe", '55555');
+   document.getElementById("cli").style.color = 'red';
+   //document.location.replace("http://192.168.0.100:8090/success");
+});
+</script>
+
+</body>
+<!--window.onload = function(){
+var win = document.getElementById("iframe").contentWindow; // объект iframe
+win.postMessage("Сообщение отправлено с страницы "); // отправляем сообщение в iframe ( после запятой адресс iframe )
+
+function listener(event) { // получение сообщения из iframe
+    event.origin == '' 
+    document.getElementById("reciveIframe").innerHTML = event.origin + " прислал: " + event.data;
+	document.location.replace("http://192.168.0.100:8090/success");
+}
+if (window.addEventListener){
+    window.addEventListener("message", listener,false);
+ } else {
+    window.attachEvent("onmessage", listener);
+ }     
+} >
+</html-->

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--script src="jquery_menu.js"></script-->	
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+</script>
+<script src="{{url_for('static', filename='jquery_menu.js') }}"></script>	
+<!--style type="text/css">
+body{
+	background-color: rgba(23,20,33,1.00);
+	color: rgba(255,199,80,1.00);
+}
+ #gorizontal_menu{
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	z-index: 47;
+	background-color: rgba(3,2,2,0.52);
+	border-radius: 0px 0px 30px 30px;
+	margin-top: -4%;
+	padding-bottom: 0px;
+	padding-top: 4%;
+}
+#menu{
+	
+}
+#menu li{
+	display: inline;
+	list-style: none;
+	margin-right: 10px;
+	margin-left: 10px;
+	clear: right;
+}
+#menu li a{
+	color: rgba(255,247,247,1.00);
+}
+#menu li button{
+	background-color: rgba(0,0,0,0.00);
+	border-width: 0px;
+	color: rgba(255,255,255,1.00);
+	text-decoration: underline;
+	font-weight: 600;
+	
+}
+
+#main_photo{
+	
+}
+#main_photo img{
+	width: 100%;
+
+
+}
+
+#bottom_box {
+	list-style: none;
+	margin: 5px 10px;
+}
+#main_information_text{
+	margin-left: 20%;
+	width: 60%;
+	
+}
+.for_img_right {
+	width: 100%;
+
+}
+.for_img_left {
+	width: 100%;
+}
+
+.text_and_img{
+	padding-top: 52px;
+
+}
+.main_text_blok {
+	width: 40%;
+
+}
+.probaclass {
+	width: 40%;
+	overflow-x: hidden;
+}
+.text_and_img td {
+	width: 50%;
+	max-width: 50%;
+}
+.teble_text_on_main_page {
+	padding-left: 10%;
+}
+footer{
+	margin-top: 50px;
+	text-align: right;	
+}
+#personal_account{
+	text-align: left;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-top: 48px;
+	
+}
+#more_information_text{
+	
+	
+}
+#vertical_menu{
+	text-align: left;
+
+	//margin-right: 80%;
+	//margin-left: -10%;
+	display: inline-block;
+	vertical-align: top;
+	width: 25%;
+	margin-left: -9%;
+	
+}
+#vertical_menu ul li img{
+	width: 100%;
+}
+#vertical_menu button{
+	text-align: left;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	width: 100%;
+	
+}
+#profil_text{
+	display: inline-block;
+	margin-left: 0px;
+	width: 79%;
+	text-align: center;
+}
+#profil_text img{
+	width: 72%;
+	text-align: right;
+
+}
+.data_green_house{
+	display: inline-block;
+	margin-top: 25px;
+	vertical-align: top;
+	text-align: left;
+	width: 214px;
+}
+#demo_green_house div img{
+	width: 120px;
+}
+<link rel="stylesheet" href="style.css" type="text/css"/>
+</style-->
+<!--link rel="stylesheet" href="style.css" type="text/css"/-->
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+<!--link rel="stylesheet" href="templates/style.css" type="text/css"/-->
+<title>Документ с фреймами</title>
+</head>
+<body>	
+
+<header id=gorizontal_menu>
+<div id="menu" class="default">
+	<ul>
+        <li><button type="button" onclick="who_page(0)" id="main">Главная</button></li>
+        <li><button type="button" onclick="who_page(1)" id="buttom_menu2">Узнать больше</button></li>
+        <li><button type="button" onclick="who_page(2)" id="buttom_menu3">Личный кабинет</button></li>
+		<li><button type="button" onclick="who_page(3)" id="buttom_menu4">Виды</button></li>
+		<li><button type="button" onclick="who_page(4)" id="buttom_menu5">Поддержка</button></li> 
+		{% if "username" in session %}
+    	<a class="navbar-brand" href="/logout">{{session['username']}}</a>
+		{% endif %}
+		</ul>
+    </div>
+</header>
+	<!-- ------------------------------------------------------------------------1 -->
+<section id=main_photo>
+	<img src="{{ url_for('static', filename='main_img.jpg') }}" alt="тут должна быть картинка, но её нет"> 
+</section>
+	<!-- ------------------------------------------------------------------------1 -->
+<main id=bottom_box>
+	<section id=main_information_text>
+		<table class="text_and_img"><tr><td>
+			<div>
+            	<img src="{{ url_for('static', filename='for_chief_page1.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
+			</div></td>
+			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+		</table>
+		
+		<table class="text_and_img"><tr><td>
+			<div class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+			<td><div>
+            	<img src="{{ url_for('static', filename='for_chief_page2.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_right>
+			</div></td>
+		</table>
+		<table class="text_and_img"><tr><td>
+			<div>
+            	<img src="{{ url_for('static', filename='for_chief_page3.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
+			</div></td>
+			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+		</table>
+		
+		<table class="text_and_img"><tr><td>
+			<div class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+			<td><div>
+            	<img src="{{ url_for('static', filename='for_chief_page4.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_right>
+			</div></td>
+		</table>
+		<table class="text_and_img"><tr><td>
+			<div>
+            	<img src="{{ url_for('static', filename='for_chief_page5.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
+			</div></td>
+			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+		</table>
+	</section>
+	<section id=more_information_text style="display: none;">
+		<h3>узнать больше<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></h3>
+	</section>
+  <section id=personal_account style="display: none;">
+		<div id="vertical_menu">
+		{% if "username" in session %}
+		<ul>
+			<table>
+				<tr>
+					<td>
+						<li style="background-image: none;">
+							<img src="{{ url_for('static', filename='anonimus1.jpg') }}" alt="тут должна быть картинка, но её нет">
+			
+						</li>
+					</td>
+				</tr>
+            
+				<tr>
+					<td>
+						<li>
+							<div>
+								<button type="button" onclick="vertical_menu('-1')" id="buttom_menu5">Профиль</button>
+							</div>
+						</li>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<li>
+							<div><button type="button" onclick="vertical_menu('-2')" >Демо</button></div>
+						</li>
+					</td>
+				</tr>
+				{% if "username" in session %}
+				{% for green_house_herf in green_houses_herfs %}
+            	<tr onmouseover="changeItem('{{green_house_herf[1]}}')" onmouseout="rechangeItem('{{green_house_herf[1]}}')">
+					<td>
+						<li onmouseover="changeItem('{{green_house_herf[1]}}')" onmouseout="rechangeItem('{{green_house_herf[1]}}')">
+							<div>
+								<button type="button" onclick="vertical_menu({{green_house_herf[1]}})">Теплица{{green_house_herf[1]}}</button>
+									<form action="" method="post" novalidate style="display: none;">
+        								{{ green_house_herf[2].hidden_tag() }}
+        								<p style="display: none;">{{ green_house_herf[2].delite }}</p>
+    								</form>
+								<img id="v_m_img_del_{{green_house_herf[1]}}" src="static/krest.png" alt="тут должна быть картинка, но её нет"
+						 		onclick='input_delete_img("{{green_house_herf[1]}}")' onmouseover="changeItem('{{green_house_herf[1]}}')">
+							</div>
+						</li>
+					</td>
+				</tr>
+			{% endfor %}
+			{% endif %}
+			<!--li><button type="button" onclick="vertical_menu(3)">Теплица2</button></li-->
+			<tr>
+				<td>
+					<li>
+						<div>
+							<button type="button" onclick="vertical_menu('-3')" id="buttom_menu5">Добавить теплицу</button>
+						</div>
+					</li> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<li>
+						<div>
+							<button type="button"  id="buttom_menu6">выйти</button>
+						</div>
+					</li>
+				</td>
+			</tr>
+		</table>
+	</ul>
+	{% endif %}
+   	</div>
+		<!--/td>  {{ url_for('static', filename='for_chief_page1') }} <td-->
+<div id="profil_text">
+	{% if "username" in session %}
+	<div id="profile" style="display: none;">профиль (id = profile)</div>
+	<div id="demo_green_house" style="display: none;">демо</div>
+	<div id="add_green_house" style="display: none;"> добавление <br>{% include "add_greeen_house_file.html"%}</div> 
+	{% for green_house_herf in green_houses_herfs %}
+        <div id="my_green_house{{green_house_herf[1]}}" style="display: none;">
+ 			<iframe id="iframe{{green_house_herf[1]}}"
+					src="{{green_house_herf[0]}}" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="for_more_green_houses_iframe_size_window"
+					style="width: 100%; height: 4052px;">
+			</iframe> 
+        </div>
+	{% endfor %}
+          <!--div id="my_green_house1" style="display: none;">
+			 <iframe class="for_more_green_houses_iframe_size_window"
+					src="http://{{adres}}/1" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+					 style="width: 100%; height: 4052px;">
+			  </iframe> 
+		  </div>
+		  <div id="my_green_house2" style="display: none;">
+			  <iframe 
+					src="http://{{adres}}/2" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+					  class="for_more_green_houses_iframe_size_window"
+					  style="width: 100%; height: 4052px;">
+			  </iframe>
+		  </div-->
+		  
+	
+	{% else %}
+	{% include "login.html"%}
+	{% endif %}
+	      </div>
+          
+<!-- {% if "username" in session %}
+	{% for green_house_herf in green_houses_herfs %}
+//else if ((who_this == {{green_house_herf[1]}})){
+    		//document.getElementById("a3").style.display = ''; or ((who_this) == ({{green_house_herf[1]}}))
+    //document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = '';
+  		//}
+	 {% endfor %}
+{% endif %} 
+
+var p;
+function vertical_menu(who_this) {
+	p = document.getElementById('text_change');
+	p.innerHTML = who_this;
+	document.getElementById("profile").style.display = 'none';
+	document.getElementById("demo_green_house").style.display = 'none';
+	document.getElementById("add_green_house1").style.display = 'none';
+	document.getElementById("my_green_house1").style.display = 'none';
+	document.getElementById("my_green_house2").style.display = 'none';
+	{% if "username" in session %}
+		{% for green_house_herf in green_houses_herfs %}
+	//document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = 'none';
+ 		{% endfor %}
+	{% endif %}
+if ((who_this == -2)  || (who_this == '-2')){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("demo_green_house").style.display = '';
+  }
+else if ((who_this == 1) || (who_this == '1')) {
+	p = document.getElementById('text_change');
+	p.innerHTML = '';
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("my_green_house1").style.display = '';
+}
+else if ((who_this == 2)  || (who_this == '2')){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("my_green_house2").style.display = '';
+}
+else if ((who_this == 5)  || (who_this == '5')){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("add_green_house1").style.display = '';
+  }
+else{
+    document.getElementById("profile").style.display = '';
+    //document.getElementById("a3").style.display = 'none';
+  }
+}
+
+
+-->
+		  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+	  </div>
+		  <!--/td></tr></table-->
+	</section>
+	<!-- section id=right_blank>
+	
+	</section-->
+</main>
+<footer>подвал сайта<br>тут будет отображаться контактная информация<br>К примеру, телефон 88005553535<br>Или таже самая почта dog@gmail.com<br>А также автор сайта, пока что неизвестный
+</footer>
+<script>
+window.onload = function(){
+var win = document.getElementById("iframe1").contentWindow; // объект iframe
+win.postMessage("Сообщение отправлено с страницы ","*");} // отправляем сообщение в iframe ( после запятой адресс iframe )
+
+function changeItem(who_page) {
+  document.getElementById('v_m_img_del_'+who_page).style.display = 'inline';
+}
+// функция, которая сработает при наведении.
+//она означает - выбрать элемент к Id у которого надо что-то изменить.
+// когда в скобки где написано one-two добавите Id своего элемента
+function rechangeItem(who_page) {
+  document.getElementById('v_m_img_del_'+who_page).style.display = 'none';
+}// тут всё также. но наобарот. протсес происходящий про отводе курсора.
+function demo_green_house_mode(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_non-automatic_mode").style.display = '';
+        document.getElementById("demo_avto_mode").style.display = 'none';
+    
+        document.getElementById("demo_batton_status_woter1").disabled = false;
+        document.getElementById("demo_batton_status_woter0").disabled = false;
+        document.getElementById("demo_batton_status_fire1").disabled = false;
+        document.getElementById("demo_batton_status_fire0").disabled = false;
+        document.getElementById("demo_batton_status_windy1").disabled = false;
+        document.getElementById("demo_batton_status_windy0").disabled = false;
+        document.getElementById("demo_batton_status_woter1").disabled = false;
+        document.getElementById("demo_batton_status_woter0").disabled = false;
+        document.getElementById("demo_batton_status_cold1").disabled = false;
+        document.getElementById("demo_batton_status_cold0").disabled = false;
+        document.getElementById("demo_batton_status_par1").disabled = false;
+        document.getElementById("demo_batton_status_par0").disabled = false;
+        document.getElementById("demo_batton_status_windy_root1").disabled = false;
+        document.getElementById("demo_batton_status_windy_root0").disabled = false;
+  }
+    else{
+        document.getElementById("demo_avto_mode").style.display = '';
+        document.getElementById("demo_non-automatic_mode").style.display = 'none';
+       
+        document.getElementById("demo_batton_status_woter1").disabled = true;
+        document.getElementById("demo_batton_status_woter0").disabled = true;
+        document.getElementById("demo_batton_status_fire1").disabled = true;
+        document.getElementById("demo_batton_status_fire0").disabled = true;
+        document.getElementById("demo_batton_status_windy1").disabled = true;
+        document.getElementById("demo_batton_status_windy0").disabled = true;
+        document.getElementById("demo_batton_status_woter1").disabled = true;
+        document.getElementById("demo_batton_status_woter0").disabled = true;
+        document.getElementById("demo_batton_status_cold1").disabled = true;
+        document.getElementById("demo_batton_status_cold0").disabled = true;
+        document.getElementById("demo_batton_status_par1").disabled = true;
+        document.getElementById("demo_batton_status_par0").disabled = true;
+        document.getElementById("demo_batton_status_windy_root1").disabled = true;
+        document.getElementById("demo_batton_status_windy_root0").disabled = true;
+    }
+}
+function function_for_demo_change_buttons_status_windy_root(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_windy_root0").style.display = '';
+        document.getElementById("demo_batton_status_windy_root1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_windy_root1").style.display = '';
+        document.getElementById("demo_batton_status_windy_root0").style.display = 'none';
+   
+    }
+}
+function function_for_demo_change_buttons_status_par(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_par0").style.display = '';
+        document.getElementById("demo_batton_status_par1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_par1").style.display = '';
+        document.getElementById("demo_batton_status_par0").style.display = 'none';
+   
+    }}
+function function_for_demo_change_buttons_status_cold(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_cold0").style.display = '';
+        document.getElementById("demo_batton_status_cold1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_cold1").style.display = '';
+        document.getElementById("demo_batton_status_cold0").style.display = 'none';
+   
+    }}
+function function_for_demo_change_buttons_status_windy(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_windy0").style.display = '';
+        document.getElementById("demo_batton_status_windy1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_windy1").style.display = '';
+        document.getElementById("demo_batton_status_windy0").style.display = 'none';
+   
+    }}
+function function_for_demo_change_buttons_status_fire(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_fire0").style.display = '';
+        document.getElementById("demo_batton_status_fire1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_fire1").style.display = '';
+        document.getElementById("demo_batton_status_fire0").style.display = 'none';
+   
+    }}
+function function_for_demo_change_buttons_status_woter(who_this) {
+    if (who_this == 1){
+        document.getElementById("demo_batton_status_woter0").style.display = '';
+        document.getElementById("demo_batton_status_woter1").style.display = 'none';
+  }
+    else{
+        document.getElementById("demo_batton_status_woter1").style.display = '';
+        document.getElementById("demo_batton_status_woter0").style.display = 'none';
+   
+    }}
+
+function who_page(who_this) {
+	document.getElementById("main_information_text").style.display = 'none';
+	document.getElementById("more_information_text").style.display = 'none';
+	document.getElementById("personal_account").style.display = 'none';
+	document.getElementById("more_information_text").style.display = 'none';
+
+if (who_this == 1){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("more_information_text").style.display = '';
+  }
+else if (who_this == 2){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("personal_account").style.display = '';
+  }
+else{
+    document.getElementById("main_information_text").style.display = '';
+    //document.getElementById("a3").style.display = 'none';
+  }
+}
+
+function show_more_parameters_green_house(who_this) {
+if (who_this == 1){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("more_parameters_for_green_house").style.display = '';
+	document.getElementById("more_parameters_green_house0").style.display = '';
+	document.getElementById("more_parameters_green_house").style.display = 'none';
+	for_show_more_parameter = 0;
+  }
+else{
+	document.getElementById("more_parameters_for_green_house").style.display = 'none';
+	document.getElementById("more_parameters_green_house0").style.display = 'none';
+	document.getElementById("more_parameters_green_house").style.display = '';
+	for_show_more_parameter = 1;
+    }
+}
+function input_delete_img(who_this){
+	//var p;
+	//<input id="crutch_field2" name="crutch_field" type="text" value="">
+	//p = document.getElementById("crutch_field"+who_this);
+	//p.innerHTML = who_this;
+	
+	document.getElementById("delite" + who_this).click();
+	var win = "iframe" + who_this;
+	win.postMessage("delited/{{session['username']}}");
+}
+function vertical_menu(who_this) {
+	//var p;
+	//p = document.getElementById("text_change");
+	//p.innerHTML = who_this;
+	window.onload();
+	document.getElementById("profile").style.display = 'none';
+	document.getElementById("demo_green_house").style.display = 'none';
+	{% if "username" in session %}
+		{% for green_house_herf in green_houses_herfs %}
+	document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = 'none';
+ 		{% endfor %}
+	{% endif %}
+	document.getElementById("add_green_house").style.display = 'none';
+	
+	
+	if (parseInt(who_this) == parseInt('-2')){
+		document.getElementById("demo_green_house").style.display = '';
+		
+	}
+	{% if "username" in session %}
+		{% for green_house_herf in green_houses_herfs %}
+	else if ((who_this == {{green_house_herf[1]}})){
+    	document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = '';
+			var win = "iframe{{green_house_herf[1]}}";
+			win.postMessage("autorisation/{{session['username']}}");
+		
+		//отсылка логина теплице
+  	}
+		{% endfor %}
+	{% endif %} 
+	else if (parseInt(who_this) == parseInt('-3')){
+		document.getElementById("add_green_house").style.display = '';
+		
+	}
+	else{
+		document.getElementById("profile").style.display = '';
+		
+	}
+
+}
+function show_more_buttons_green_house(who_this){
+    if (who_this == 1){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("more_battons_for_green_house").style.display = '';
+	document.getElementById("more_buttons_green_house0").style.display = '';
+	document.getElementById("more_buttons_green_house").style.display = 'none';
+	for_show_more_parameter = 0;
+  }
+else{
+	document.getElementById("more_battons_for_green_house").style.display = 'none';
+	document.getElementById("more_buttons_green_house0").style.display = 'none';
+	document.getElementById("more_buttons_green_house").style.display = '';
+	for_show_more_parameter = 1;
+    }
+}
+	</script>
+</body>
+	
+</html> 
+									   

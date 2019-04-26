@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script>
+//var auto = false;
+{% if show%}
+        function get_len() {
+            $.ajax({
+                type: "POST",
+                url: "{{domen_herf}}get_len",
+                data: $('form').serialize(),
+                type: 'POST',
+                success: function(response) {
+                    var json = jQuery.parseJSON(response)
+					$('#temp').html(json.temp)
+					$('#humory').html(json.humory)
+					document.getElementById("cam").setAttribute('src',json.image);
+                    console.log(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+	{%endif%}
+</script>
+<body>
+ 
+<div id="demo_green_house" >
+	{% if show%}
+	<img src="static/web_camm.jpg" alt="тут должна быть картинка, но её нет" id="cam">
+	<div>
+		<div class="data_green_house">Температура внутри = <span id="temp">None</span>°C<br>освещённость = 79%</div>
+		<div class="data_green_house">Температура снаружи = 23°C<br>влажность корней = <span id="humory">None</span>%</div>
+	</div>
+	<div id="more_parameters_for_green_house" style="display: none;">
+		<div class="data_green_house">влажность = 68%<br>загазованность = 11</div>
+        <div class="data_green_house">Красный = 80%<br>синий = 60% <br> интервал полива = 80%</div>
+	</div>
+	<button type="button" onclick="show_more_parameters_green_house(1)" id="more_parameters_green_house">Ещё</button>
+	<button type="button" onclick="show_more_parameters_green_house(0)" id="more_parameters_green_house0" style="display: none;">^</button>
+	
+
+	 
+		<div>
+		{%for row_forms in form_list[:2:]%}
+			<div class="data_green_house">
+				{%for sp in row_forms%}
+					<form  action="{{domen_herf}}get_len" method="post" name="form" novalidate style="display: none;">
+						{{sp[0].hidden_tag() }}
+						{{sp[0].button_on() }}
+						{{sp[0].button_off() }}
+						<input id="name{{sp[1]}}" name="name{{sp[1]}}" type="text">
+					</form> 
+					<div class="data_green_house">
+						<button type="button" id="show_button_{{sp[4]}}{{sp[1]}}" disabled>
+							<img src="static/{{sp[2]}}" alt="тут должна быть картинка, но её нет" id="img_{{sp[4]}}{{sp[1]}}"
+								onclick='click_img_fun("show_button_{{sp[5]}}{{sp[1]}}", "show_button_{{sp[4]}}{{sp[1]}}","button_{{sp[4]}}{{sp[1]}}","name{{sp[1]}}", "{{sp[5]}}/{{sp[1]}}")'>
+						</button>
+						<button type="button" id="show_button_{{sp[5]}}{{sp[1]}}"  style="display: none;" disabled>
+							<img src="static/{{sp[3]}}" alt="тут должна быть картинка, но её нет" id="img_{{sp[5]}}{{sp[1]}}"
+								onclick='click_img_fun("show_button_{{sp[4]}}{{sp[1]}}", "show_button_{{sp[5]}}{{sp[1]}}","button_{{sp[5]}}{{sp[1]}}","name{{sp[1]}}", "{{sp[4]}}/{{sp[1]}}")'>
+						</button>
+					</div>
+				{%endfor%}
+			</div>
+		{%endfor%}
+		</div>
+		<div id="more_battons_for_green_house" style="display: none;">
+		{%for row_forms in form_list[2::]%}
+			<div class="data_green_house">
+				{%for sp in row_forms%}
+					<form  action="{{domen_herf}}get_len" method="post" name="form" novalidate style="display: none;">
+						{{sp[0].hidden_tag() }}
+						{{sp[0].button_on() }}
+						{{sp[0].button_off() }}
+						<input id="name{{sp[1]}}" name="name{{sp[1]}}" type="text">
+					</form> 
+					<div class="data_green_house">
+						<button type="button" id="show_button_{{sp[4]}}{{sp[1]}}" disabled>
+							<img src="static/{{sp[2]}}" alt="тут должна быть картинка, но её нет" id="img_{{sp[4]}}{{sp[1]}}"
+								onclick='click_img_fun("show_button_{{sp[5]}}{{sp[1]}}", "show_button_{{sp[4]}}{{sp[1]}}","button_{{sp[4]}}{{sp[1]}}","name{{sp[1]}}", "{{sp[5]}}/{{sp[1]}}")'>
+						</button>
+						<button type="button" id="show_button_{{sp[5]}}{{sp[1]}}"  style="display: none;" disabled>
+							<img src="static/{{sp[3]}}" alt="тут должна быть картинка, но её нет" id="img_{{sp[5]}}{{sp[1]}}"
+								onclick='click_img_fun("show_button_{{sp[4]}}{{sp[1]}}", "show_button_{{sp[5]}}{{sp[1]}}","button_{{sp[5]}}{{sp[1]}}","name{{sp[1]}}", "{{sp[4]}}/{{sp[1]}}")'>
+						</button>
+					</div>
+				{%endfor%}
+			</div>
+		{%endfor%}
+		</div>
+		<button type="button" onclick="show_more_buttons_green_house(1)" id="more_buttons_green_house">Ещё</button>
+		<button type="button" onclick="show_more_buttons_green_house(0)" id="more_buttons_green_house0" style="display: none;">^</button><br>
+		<button type="button" onclick="demo_green_house_mode(1)" id="demo_avto_mode">авто</button>
+        <button type="button" onclick="demo_green_house_mode(0)" id="demo_non-automatic_mode" style="display: none;">ручной</button>
+		
+		<form  action="{{domen_herf}}get_len" method="post" name="form" novalidate style="display: none;">
+			<input type="button" value="Отправить" onclick="get_len();" id="name-1" name="name-1">
+		</form> 
+	{%else%}
+	<form action="" method="post" novalidate>
+        {{ add_list_form.hidden_tag() }}<br>
+            {{ add_list_form.login }}<br>
+			{{ add_list_form.password }}
+        <p>{{ add_list_form.submit() }}</p>
+    </form>
+	{%endif%}
+	<div id="len"></div>
+</div>
+
+
+<script type="text/javascript">
+
+function listener(event){
+	//document.getElementById("test").innerHTML = event.origin + " прислал: " + event.data;
+	var input = event.data;
+	var arr = input.split('/');
+	//document.getElementById("test").innerHTML = event.origin + " прислал: " + '//   ' + arr[0] + " -------   " + arr[1];
+	document.getElementById("lo").value = arr[1];
+	document.getElementById("Pa").value = arr[0];
+	document.getElementById("Clickable").click();
+	
+	//document.getElementById("submit").click();
+}
+//document.getElementById("button_on1").onclick = "ajax_input();";
+	{% if show%}
+		{%for row_forms in form_list%}
+			{%for sp in row_forms%}
+document.getElementById("button_on{{sp[1]}}").setAttribute('onclick','get_len()');
+document.getElementById("button_off{{sp[1]}}").setAttribute('onclick','get_len()');
+document.getElementById("button_on{{sp[1]}}").setAttribute('type','button');
+document.getElementById("button_off{{sp[1]}}").setAttribute('type','button');
+			{%endfor%}
+		{%endfor%}
+	{%endif%}
+
+if (window.addEventListener) {
+	window.addEventListener("message", listener,false);
+} else { // ie 8
+	window.attachEvent("onmessage", listener);
+}
+function click_img_fun(onid, offid, clickid, label, value){
+	if (true){
+		//document.getElementById("button_on1").setAttribute('onclick','ajax_input()');
+		document.getElementById(label).value = value;
+		document.getElementById(onid).style.display = '';
+		document.getElementById(offid).style.display = 'none';
+		//ajax_input();
+		document.getElementById(clickid).click();
+		document.getElementById(label).value = '';
+		//ajax_input();
+	}
+}
+function sendData4(led) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("LEDState4").innerHTML =
+      this.responseText;
+		alert("4");
+    }
+  };
+  xhttp.open("GET", "setLED4?LEDstate4="+led, true);
+  xhttp.send();
+  return false;
+} 
+setInterval(function() {document.getElementById("name-1").click();}, 20000);  
+function show_more_parameters_green_house(who_this) {
+if (who_this == 1){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("more_parameters_for_green_house").style.display = '';
+	document.getElementById("more_parameters_green_house0").style.display = '';
+	document.getElementById("more_parameters_green_house").style.display = 'none';
+	for_show_more_parameter = 0;
+  }
+else{
+	document.getElementById("more_parameters_for_green_house").style.display = 'none';
+	document.getElementById("more_parameters_green_house0").style.display = 'none';
+	document.getElementById("more_parameters_green_house").style.display = '';
+	for_show_more_parameter = 1;
+    }
+}
+function show_more_buttons_green_house(who_this){
+    if (who_this == 1){
+    //document.getElementById("a3").style.display = '';
+    document.getElementById("more_battons_for_green_house").style.display = '';
+	document.getElementById("more_buttons_green_house0").style.display = '';
+	document.getElementById("more_buttons_green_house").style.display = 'none';
+	for_show_more_parameter = 0;
+  }
+else{
+	document.getElementById("more_battons_for_green_house").style.display = 'none';
+	document.getElementById("more_buttons_green_house0").style.display = 'none';
+	document.getElementById("more_buttons_green_house").style.display = '';
+	for_show_more_parameter = 1;
+    }
+}
+function demo_green_house_mode(who_this) {
+    if (who_this == 1){
+		//auto = false;
+        document.getElementById("demo_non-automatic_mode").style.display = '';
+        document.getElementById("demo_avto_mode").style.display = 'none';
+    
+{%for row_forms in form_list%}
+	{%for sp in row_forms%}
+		//document.getElementById("button_off{{sp[1]}}").disabled = false;
+		//document.getElementById("button_on{{sp[1]}}").disabled = false;
+		document.getElementById("img_on{{sp[1]}}").setAttribute('onclick',"");
+		document.getElementById("img_off{{sp[1]}}").setAttribute('onclick',"");
+	{%endfor%}
+{%endfor%}
+	} else{
+		//auto = true;
+		document.getElementById("demo_avto_mode").style.display = '';
+        document.getElementById("demo_non-automatic_mode").style.display = 'none';
+{%for row_forms in form_list%}
+	{%for sp in row_forms%}
+		//document.getElementById("button_off{{sp[1]}}").disabled = true;
+		//document.getElementById("button_on{{sp[1]}}").disabled = true;
+       	document.getElementById("img_on{{sp[1]}}").setAttribute('onclick',"click_img_fun('show_button_off{{sp[1]}}', 'show_button_on{{sp[1]}}','button_on{{sp[1]}}', 'name{{sp[1]}}', 'off/{{sp[1]}}');");
+		document.getElementById("img_off{{sp[1]}}").setAttribute('onclick',"click_img_fun('show_button_on{{sp[1]}}', 'show_button_off{{sp[1]}}','button_off{{sp[1]}}', 'name{{sp[1]}}', 'on/{{sp[1]}}');");
+
+	{%endfor%}
+{%endfor%}
+    }
+}
+</script>
+</body>
+</html>
