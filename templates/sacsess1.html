@@ -2,158 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--script src="jquery_menu.js"></script-->	
+
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous">
 </script>
 <script src="{{url_for('static', filename='jquery_menu.js') }}"></script>	
-<!--style type="text/css">
-body{
-	background-color: rgba(23,20,33,1.00);
-	color: rgba(255,199,80,1.00);
-}
- #gorizontal_menu{
-	position: fixed;
-	width: 100%;
-	text-align: center;
-	z-index: 47;
-	background-color: rgba(3,2,2,0.52);
-	border-radius: 0px 0px 30px 30px;
-	margin-top: -4%;
-	padding-bottom: 0px;
-	padding-top: 4%;
-}
-#menu{
-	
-}
-#menu li{
-	display: inline;
-	list-style: none;
-	margin-right: 10px;
-	margin-left: 10px;
-	clear: right;
-}
-#menu li a{
-	color: rgba(255,247,247,1.00);
-}
-#menu li button{
-	background-color: rgba(0,0,0,0.00);
-	border-width: 0px;
-	color: rgba(255,255,255,1.00);
-	text-decoration: underline;
-	font-weight: 600;
-	
-}
-
-#main_photo{
-	
-}
-#main_photo img{
-	width: 100%;
-
-
-}
-
-#bottom_box {
-	list-style: none;
-	margin: 5px 10px;
-}
-#main_information_text{
-	margin-left: 20%;
-	width: 60%;
-	
-}
-.for_img_right {
-	width: 100%;
-
-}
-.for_img_left {
-	width: 100%;
-}
-
-.text_and_img{
-	padding-top: 52px;
-
-}
-.main_text_blok {
-	width: 40%;
-
-}
-.probaclass {
-	width: 40%;
-	overflow-x: hidden;
-}
-.text_and_img td {
-	width: 50%;
-	max-width: 50%;
-}
-.teble_text_on_main_page {
-	padding-left: 10%;
-}
-footer{
-	margin-top: 50px;
-	text-align: right;	
-}
-#personal_account{
-	text-align: left;
-	margin-left: 10%;
-	margin-right: 10%;
-	padding-top: 48px;
-	
-}
-#more_information_text{
-	
-	
-}
-#vertical_menu{
-	text-align: left;
-
-	//margin-right: 80%;
-	//margin-left: -10%;
-	display: inline-block;
-	vertical-align: top;
-	width: 25%;
-	margin-left: -9%;
-	
-}
-#vertical_menu ul li img{
-	width: 100%;
-}
-#vertical_menu button{
-	text-align: left;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	width: 100%;
-	
-}
-#profil_text{
-	display: inline-block;
-	margin-left: 0px;
-	width: 79%;
-	text-align: center;
-}
-#profil_text img{
-	width: 72%;
-	text-align: right;
-
-}
-.data_green_house{
-	display: inline-block;
-	margin-top: 25px;
-	vertical-align: top;
-	text-align: left;
-	width: 214px;
-}
-#demo_green_house div img{
-	width: 120px;
-}
-<link rel="stylesheet" href="style.css" type="text/css"/>
-</style-->
-<!--link rel="stylesheet" href="style.css" type="text/css"/-->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
-<!--link rel="stylesheet" href="templates/style.css" type="text/css"/-->
 <title>Документ с фреймами</title>
 </head>
 <body>	
@@ -182,40 +38,44 @@ footer{
 		<table class="text_and_img"><tr><td>
 			<div>
             	<img src="{{ url_for('static', filename='for_chief_page1.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
-			</div></td>
-			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+			</div>
+			
+			</td>
+			<td>
+				<div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div>
+			</td></tr>
 		</table>
 		
 		<table class="text_and_img"><tr><td>
 			<div class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
 			<td><div>
             	<img src="{{ url_for('static', filename='for_chief_page2.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_right>
-			</div></td>
+			</div></td></tr>
 		</table>
 		<table class="text_and_img"><tr><td>
 			<div>
             	<img src="{{ url_for('static', filename='for_chief_page3.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
 			</div></td>
-			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td></tr>
 		</table>
 		
 		<table class="text_and_img"><tr><td>
 			<div class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
 			<td><div>
             	<img src="{{ url_for('static', filename='for_chief_page4.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_right>
-			</div></td>
+			</div></td></tr>
 		</table>
 		<table class="text_and_img"><tr><td>
 			<div>
             	<img src="{{ url_for('static', filename='for_chief_page5.jpg') }}" alt="тут должна быть картинка, но её нет" class=for_img_left>
 			</div></td>
-			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td>
+			<td><div  class=teble_text_on_main_page>сдесь находится текст, который необходимо поместить для этой картинки</div></td></tr>
 		</table>
 	</section>
 	<section id=more_information_text style="display: none;">
 		<h3>узнать больше<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></h3>
 	</section>
-  <section id=personal_account style="display: none;">
+    <section id=personal_account style="display: none;">
 		<div id="vertical_menu">
 		{% if "username" in session %}
 		<ul>
@@ -287,6 +147,7 @@ footer{
 	</ul>
 	{% endif %}
    	</div>
+	
 		<!--/td>  {{ url_for('static', filename='for_chief_page1') }} <td-->
 <div id="profil_text">
 	{% if "username" in session %}
@@ -302,77 +163,13 @@ footer{
 			</iframe> 
         </div>
 	{% endfor %}
-          <!--div id="my_green_house1" style="display: none;">
-			 <iframe class="for_more_green_houses_iframe_size_window"
-					src="http://{{adres}}/1" frameborder="0"
-					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-					 style="width: 100%; height: 4052px;">
-			  </iframe> 
-		  </div>
-		  <div id="my_green_house2" style="display: none;">
-			  <iframe 
-					src="http://{{adres}}/2" frameborder="0"
-					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-					  class="for_more_green_houses_iframe_size_window"
-					  style="width: 100%; height: 4052px;">
-			  </iframe>
-		  </div-->
 		  
 	
 	{% else %}
 	{% include "login.html"%}
 	{% endif %}
 	      </div>
-          
-<!-- {% if "username" in session %}
-	{% for green_house_herf in green_houses_herfs %}
-//else if ((who_this == {{green_house_herf[1]}})){
-    		//document.getElementById("a3").style.display = ''; or ((who_this) == ({{green_house_herf[1]}}))
-    //document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = '';
-  		//}
-	 {% endfor %}
-{% endif %} 
-
-var p;
-function vertical_menu(who_this) {
-	p = document.getElementById('text_change');
-	p.innerHTML = who_this;
-	document.getElementById("profile").style.display = 'none';
-	document.getElementById("demo_green_house").style.display = 'none';
-	document.getElementById("add_green_house1").style.display = 'none';
-	document.getElementById("my_green_house1").style.display = 'none';
-	document.getElementById("my_green_house2").style.display = 'none';
-	{% if "username" in session %}
-		{% for green_house_herf in green_houses_herfs %}
-	//document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = 'none';
- 		{% endfor %}
-	{% endif %}
-if ((who_this == -2)  || (who_this == '-2')){
-    //document.getElementById("a3").style.display = '';
-    document.getElementById("demo_green_house").style.display = '';
-  }
-else if ((who_this == 1) || (who_this == '1')) {
-	p = document.getElementById('text_change');
-	p.innerHTML = '';
-    //document.getElementById("a3").style.display = '';
-    document.getElementById("my_green_house1").style.display = '';
-}
-else if ((who_this == 2)  || (who_this == '2')){
-    //document.getElementById("a3").style.display = '';
-    document.getElementById("my_green_house2").style.display = '';
-}
-else if ((who_this == 5)  || (who_this == '5')){
-    //document.getElementById("a3").style.display = '';
-    document.getElementById("add_green_house1").style.display = '';
-  }
-else{
-    document.getElementById("profile").style.display = '';
-    //document.getElementById("a3").style.display = 'none';
-  }
-}
-
-
--->
+ 
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 	  </div>
 		  <!--/td></tr></table-->
@@ -384,9 +181,9 @@ else{
 <footer>подвал сайта<br>тут будет отображаться контактная информация<br>К примеру, телефон 88005553535<br>Или таже самая почта dog@gmail.com<br>А также автор сайта, пока что неизвестный
 </footer>
 <script>
-window.onload = function(){
-var win = document.getElementById("iframe1").contentWindow; // объект iframe
-win.postMessage("Сообщение отправлено с страницы ","*");} // отправляем сообщение в iframe ( после запятой адресс iframe )
+//window.onload = function(){
+//var win = document.getElementById("iframe1").contentWindow; // объект iframe
+//win.postMessage("Сообщение отправлено с страницы ","*");} // отправляем сообщение в iframe ( после запятой адресс iframe )
 
 function changeItem(who_page) {
   document.getElementById('v_m_img_del_'+who_page).style.display = 'inline';
@@ -541,14 +338,14 @@ function input_delete_img(who_this){
 	//p.innerHTML = who_this;
 	
 	document.getElementById("delite" + who_this).click();
-	var win = "iframe" + who_this;
-	win.postMessage("delited/{{session['username']}}");
+	//var win = "iframe" + who_this;
+	//win.postMessage("delited/{{session['username']}}");
 }
 function vertical_menu(who_this) {
 	//var p;
 	//p = document.getElementById("text_change");
 	//p.innerHTML = who_this;
-	window.onload();
+	//window.onload();
 	document.getElementById("profile").style.display = 'none';
 	document.getElementById("demo_green_house").style.display = 'none';
 	{% if "username" in session %}
@@ -567,8 +364,8 @@ function vertical_menu(who_this) {
 		{% for green_house_herf in green_houses_herfs %}
 	else if ((who_this == {{green_house_herf[1]}})){
     	document.getElementById("my_green_house{{green_house_herf[1]}}").style.display = '';
-			var win = "iframe{{green_house_herf[1]}}";
-			win.postMessage("autorisation/{{session['username']}}");
+			//var win = "iframe{{green_house_herf[1]}}";
+			//win.postMessage("autorisation/{{session['username']}}");
 		
 		//отсылка логина теплице
   	}

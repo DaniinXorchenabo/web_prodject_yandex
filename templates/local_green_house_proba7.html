@@ -15,7 +15,7 @@
   crossorigin="anonymous"></script>
 <script>
 //var auto = false;
-{% if show%}
+{% if key_session in session %}
         function get_len() {
             $.ajax({
                 type: "POST",
@@ -37,9 +37,9 @@
 	{%endif%}
 </script>
 <body>
- 
+
 <div id="demo_green_house" >
-	{% if show%}
+	{% if key_session in session %}
 	<img src="static/web_camm.jpg" alt="тут должна быть картинка, но её нет" id="cam">
 	<div>
 		<div class="data_green_house">Температура внутри = <span id="temp">None</span>°C<br>освещённость = 79%</div>
@@ -109,12 +109,14 @@
 		
 		<form  action="{{domen_herf}}get_len" method="post" name="form" novalidate style="display: none;">
 			<input type="button" value="Отправить" onclick="get_len();" id="name-1" name="name-1">
-		</form> 
+		</form>
+		{% if key_session in session %}
+    	<a class="navbar-brand" href="/logout">{{session[key_session]}}</a>
+		{% endif %}		
 	{%else%}
 	<form action="" method="post" novalidate>
         {{ add_list_form.hidden_tag() }}<br>
-            {{ add_list_form.login }}<br>
-			{{ add_list_form.password }}
+    			{{ add_list_form.password }}
         <p>{{ add_list_form.submit() }}</p>
     </form>
 	{%endif%}
@@ -123,18 +125,18 @@
 
 
 <script type="text/javascript">
-
-function listener(event){
+ 
+//function listener(event){
 	//document.getElementById("test").innerHTML = event.origin + " прислал: " + event.data;
-	var input = event.data;
-	var arr = input.split('/');
+	//var input = event.data;
+	//var arr = input.split('/');
 	//document.getElementById("test").innerHTML = event.origin + " прислал: " + '//   ' + arr[0] + " -------   " + arr[1];
-	document.getElementById("lo").value = arr[1];
-	document.getElementById("Pa").value = arr[0];
-	document.getElementById("Clickable").click();
+	//document.getElementById("lo").value = arr[1];
+	//document.getElementById("Pa").value = arr[0];
+	//document.getElementById("Clickable").click();
 	
 	//document.getElementById("submit").click();
-}
+
 //document.getElementById("button_on1").onclick = "ajax_input();";
 	{% if show%}
 		{%for row_forms in form_list%}
@@ -147,14 +149,14 @@ document.getElementById("button_off{{sp[1]}}").setAttribute('type','button');
 		{%endfor%}
 	{%endif%}
 
-if (window.addEventListener) {
-	window.addEventListener("message", listener,false);
-} else { // ie 8
-	window.attachEvent("onmessage", listener);
-}
+//if (window.addEventListener) {
+	//window.addEventListener("message", listener,false);
+//} else { // ie 8
+//	window.attachEvent("onmessage", listener);
+//}
 function click_img_fun(onid, offid, clickid, label, value){
 	if (true){
-		//document.getElementById("button_on1").setAttribute('onclick','ajax_input()');
+		document.getElementById("button_on1").setAttribute('onclick','ajax_input()');
 		document.getElementById(label).value = value;
 		document.getElementById(onid).style.display = '';
 		document.getElementById(offid).style.display = 'none';
@@ -164,19 +166,19 @@ function click_img_fun(onid, offid, clickid, label, value){
 		//ajax_input();
 	}
 }
-function sendData4(led) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("LEDState4").innerHTML =
-      this.responseText;
-		alert("4");
-    }
-  };
-  xhttp.open("GET", "setLED4?LEDstate4="+led, true);
-  xhttp.send();
-  return false;
-} 
+//function sendData4(led) {
+  //var xhttp = new XMLHttpRequest();
+  //xhttp.onreadystatechange = function() {
+    //if (this.readyState == 4 && this.status == 200) {
+   //   document.getElementById("LEDState4").innerHTML =
+   //   this.responseText;
+	//	alert("4");
+   // }
+  //};
+ // xhttp.open("GET", "setLED4?LEDstate4="+led, true);
+ // xhttp.send();
+  //return false;
+//} 
 setInterval(function() {document.getElementById("name-1").click();}, 20000);  
 function show_more_parameters_green_house(who_this) {
 if (who_this == 1){

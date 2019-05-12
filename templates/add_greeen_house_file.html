@@ -11,15 +11,6 @@
                 </div>
             {% endfor %}
         </p>
-        <p>
-            {{ addform.password.label }}<br>
-            {{ addform.password }}<br>
-            {% for error in addform.password.errors %}
-                <div class="alert alert-danger" role="alert">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </p>
         <p>{{ addform.submit() }}</p>
 		<p>{{ addform.imgpole.label }}</p>
     </form>
